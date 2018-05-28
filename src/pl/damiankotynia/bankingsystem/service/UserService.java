@@ -3,6 +3,7 @@ package pl.damiankotynia.bankingsystem.service;
 
 import pl.damiankotynia.bankingsystem.database.Database;
 import pl.damiankotynia.bankingsystem.model.User;
+import pl.damiankotynia.bankingsystem.view.PrintLayout;
 
 public class UserService {
     private InputService inputService;
@@ -28,6 +29,15 @@ public class UserService {
 
         database.addUser(user);
 
+    }
+
+    public void removeUser(){
+        System.out.println("Podaj PESEL urzytkownika ktorego chcesz usunac");
+        database.removeUser(inputService.getLong());
+    }
+
+    public void showUsers(){
+        PrintLayout.showUsers(database.getAllUsers());
     }
 
 }

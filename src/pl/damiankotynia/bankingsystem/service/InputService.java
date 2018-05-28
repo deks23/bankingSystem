@@ -30,4 +30,22 @@ public class InputService {
         }
         return returnValue;
     }
+    public int getInt(){
+
+        boolean isCorrect = false;
+        int returnValue = 0;
+        while(!isCorrect){
+            String value = input.nextLine();
+            try{
+                returnValue = Integer.parseInt(value);
+                if(returnValue>0 && returnValue<6)
+                    isCorrect = true;
+                else
+                    System.out.println("Podana wartosc jest niepoprawna");
+            }catch (NumberFormatException e){
+                System.out.println("Podana wartosc jest niepoprawna");
+            }
+        }
+        return returnValue;
+    }
 }

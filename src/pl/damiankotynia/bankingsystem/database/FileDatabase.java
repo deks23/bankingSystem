@@ -91,6 +91,7 @@ public class FileDatabase implements Database {
     @Override
     public void addUser(User user) {
         users.add(user);
+        saveDatabase();
     }
 
     @Override
@@ -101,14 +102,17 @@ public class FileDatabase implements Database {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public void removeUser(Long pesel){
+        User userToDelete = new User();
         for(User user : users){
             if(user.getPesel()==pesel){
-                users.remove(user);
+                userToDelete = user;
+                break;
             }
         }
+        users.remove(userToDelete);
+        saveDatabase();
     }
 }

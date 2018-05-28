@@ -13,4 +13,6 @@ public interface Database {
     void addUser(User user);
     void saveDatabase();
     void createDatabase();
+    void removeUser(Long pesel);
+
 }

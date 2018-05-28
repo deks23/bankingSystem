@@ -14,15 +14,35 @@ public class Main {
 
     public static void main(String[] args) {
         Database database = new FileDatabase();
-        //database.createDatabase();
-
+        UserService userService = new UserService(database);
+        InputService inputService = new InputService();
+        boolean exit = false;
         database.loadDatabase();
 
-        UserService userService = new UserService(database);
 
+        while(!exit) {
+            PrintLayout.mainMenu();
+            int option = inputService.getInt();
+            switch (option) {
+                case 1:
+                    userService.showUsers();
+                    break;
+                case 2:
+                    userService.addUser();
+                    break;
+                case 3:
+                    userService.removeUser();
+                    break;
+                case 4:
+                    System.out.println("dokonaj transakcji");
+                    break;
+                case 5:
+                    exit=true;
+                    break;
+
+            }
+        }
         //userService.addUser();
-
-        database.getAllUsers();
         //PrintLayout.mainMenu();
        /*   User u1 = new User();
         u1.setName("qwe");
@@ -32,8 +52,8 @@ public class Main {
         database.getAllUsers().add(u1);
         database.getAllUsers().add(u2);*/
 
-        PrintLayout.showUsers(database.getAllUsers());
-
+       // PrintLayout.showUsers(database.getAllUsers());
+        //userService.removeUser();
         //PrintLayout.showUsers(database.getAllUsers());
 
         database.saveDatabase();
