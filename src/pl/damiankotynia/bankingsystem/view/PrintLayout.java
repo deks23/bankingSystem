@@ -2,8 +2,7 @@ package pl.damiankotynia.bankingsystem.view;
 
 
 import pl.damiankotynia.bankingsystem.model.User;
-
-import java.util.List;
+import java.util.Set;
 
 public class PrintLayout {
 
@@ -17,7 +16,7 @@ public class PrintLayout {
         System.out.println("////////////////////////////////////////////////////");
     }
 
-    public static void showUsers(List<User> users) {
+    public static void showUsers(Set<User> users) {
         for (User user : users) {
             System.out.println("////////////////////////////////////////////////////");
             System.out.println("Id: " + user.getId());

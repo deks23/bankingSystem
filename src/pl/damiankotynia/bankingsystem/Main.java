@@ -14,27 +14,29 @@ public class Main {
 
     public static void main(String[] args) {
         Database database = new FileDatabase();
+        //database.createDatabase();
 
         database.loadDatabase();
+
         UserService userService = new UserService(database);
 
         //userService.addUser();
 
-        //database.getAllUsers().remove(0);
+        database.getAllUsers();
         //PrintLayout.mainMenu();
-        /*  User u1 = new User();
+       /*   User u1 = new User();
         u1.setName("qwe");
         User u2 = new User();
-        u1.setName("asd");
+        u2.setName("asd");
 
         database.getAllUsers().add(u1);
         database.getAllUsers().add(u2);*/
 
-        //PrintLayout.showUsers(database.getAllUsers());
-        database.saveDatabase();
         PrintLayout.showUsers(database.getAllUsers());
 
+        //PrintLayout.showUsers(database.getAllUsers());
 
+        database.saveDatabase();
 
     }
 }

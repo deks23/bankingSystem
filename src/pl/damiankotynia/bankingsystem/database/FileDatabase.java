@@ -3,12 +3,12 @@ package pl.damiankotynia.bankingsystem.database;
 import pl.damiankotynia.bankingsystem.model.User;
 
 import java.io.*;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 
 public class FileDatabase implements Database {
-    private List<User> users;
+    private Set<User> users;
     private FileInputStream fileIn = null;
     private ObjectInputStream inputStream = null;
     private FileOutputStream fileOut = null;
@@ -17,14 +17,14 @@ public class FileDatabase implements Database {
     @Override
     public void loadDatabase() {
         if(users==null){
-            users = new LinkedList<>();
+            users = new LinkedHashSet<>();
             try {
-                fileIn = new FileInputStream("users.txt");
+                fileIn = new FileInputStream("users.ser");
                 inputStream = new ObjectInputStream(fileIn);
                 try {
                     Object object = inputStream.readObject();
                     if(object!=null)
-                        users = (LinkedList<User>)object;
+                        users = (LinkedHashSet<User>)object;
 
                     System.out.println("Baza danych zostala zaladowana");
 
@@ -59,7 +59,7 @@ public class FileDatabase implements Database {
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public Set<User> getAllUsers() {
         return users;
     }
 
@@ -67,7 +67,7 @@ public class FileDatabase implements Database {
     public void saveDatabase() {
         try {
 
-            fileOut = new FileOutputStream("users.txt");
+            fileOut = new FileOutputStream("users.ser");
             out = new ObjectOutputStream(fileOut);
             out.flush();
             out.writeObject(users);
@@ -96,10 +96,19 @@ public class FileDatabase implements Database {
     @Override
     public void createDatabase() {
         try {
-            new File("users.txt").createNewFile();
+            new File("users.ser").createNewFile();
+            saveDatabase();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+    }
+
+    public void removeUser(Long pesel){
+        for(User user : users){
+            if(user.getPesel()==pesel){
+                users.remove(user);
+            }
+        }
     }
 }
