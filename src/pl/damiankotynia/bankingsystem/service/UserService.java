@@ -17,8 +17,6 @@ public class UserService {
     }
 
     public void addUser(){
-
-
         User user = new User();
         user.setId(generateID());
         System.out.println("Podaj imie:\n");
@@ -32,7 +30,10 @@ public class UserService {
         System.out.println("Podaj stan konta:\n");
         user.setCash(inputService.getDouble());
 
-        database.addUser(user);
+        if(database.addUser(user))
+            System.out.println("Użytkownik zaostał dodany poprawnie");
+        else
+            System.out.println("Błąd przy dodawaniu użytkownika");
 
     }
 

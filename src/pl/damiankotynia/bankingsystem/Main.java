@@ -2,7 +2,6 @@ package pl.damiankotynia.bankingsystem;
 
 import pl.damiankotynia.bankingsystem.database.Database;
 import pl.damiankotynia.bankingsystem.database.FileDatabase;
-import pl.damiankotynia.bankingsystem.model.User;
 import pl.damiankotynia.bankingsystem.service.InputService;
 import pl.damiankotynia.bankingsystem.service.TransactionService;
 import pl.damiankotynia.bankingsystem.service.UserService;
@@ -21,19 +20,6 @@ public class Main {
         boolean exit = false;
         database.loadDatabase();
 
-
-       /* User u1 = new User();
-        u1.setName("qwe");
-        u1.setCash(123123.1231);
-        u1.setId(3L);
-        User u2 = new User();
-        u2.setName("asd");
-        u2.setCash(12.3);
-        u2.setId(2L);
-
-
-        database.addUser(u1);
-        database.addUser(u2);*/
         while(!exit) {
             PrintLayout.mainMenu();
             int option = inputService.getMainMenuInput();
@@ -74,23 +60,8 @@ public class Main {
                     if(inputService.getAreYouSure())
                         exit=true;
                     break;
-
             }
         }
-        //userService.addUser();
-        //PrintLayout.mainMenu();
-       /*   User u1 = new User();
-        u1.setName("qwe");
-        User u2 = new User();
-        u2.setName("asd");
-
-        database.getAllUsers().add(u1);
-        database.getAllUsers().add(u2);*/
-
-       // PrintLayout.showUsers(database.getAllUsers());
-        //userService.removeUser();
-        //PrintLayout.showUsers(database.getAllUsers());
-
         database.saveDatabase();
 
     }
