@@ -5,6 +5,8 @@ import pl.damiankotynia.bankingsystem.database.Database;
 import pl.damiankotynia.bankingsystem.model.User;
 import pl.damiankotynia.bankingsystem.view.PrintLayout;
 
+import java.util.Random;
+
 public class UserService {
     private InputService inputService;
     private Database database;
@@ -15,7 +17,10 @@ public class UserService {
     }
 
     public void addUser(){
+
+
         User user = new User();
+        user.setId(generateID());
         System.out.println("Podaj imie:\n");
         user.setName(inputService.getString());
         System.out.println("Podaj nazwisko:\n");
@@ -25,20 +30,33 @@ public class UserService {
         System.out.println("Podaj adres:\n");
         user.setAddress(inputService.getString());
         System.out.println("Podaj stan konta:\n");
-        user.setCash(inputService.getLong());
+        user.setCash(inputService.getDouble());
 
         database.addUser(user);
 
     }
 
     public void removeUser(){
-        System.out.println("Podaj PESEL urzytkownika ktorego chcesz usunac");
-        database.removeUser(inputService.getLong());
+        System.out.println("Podaj numer konta ktore chcesz usunac");
+        if(database.removeUser(inputService.getLong()))
+            System.out.println("\nUsunieto użytkownika");
+        else
+            System.out.println("\nOperacja nie powiodla sie, sproboj ponownie");
     }
 
     public void showUsers(){
         PrintLayout.showUsers(database.getAllUsers());
     }
 
+    private long generateID(){
+        long id;
+        User user;
+        do {
+            user = null;
+            id = (long)(Math.random() * 200 + 10);
+            user = database.findUserById(id);
+        }while(user!=null);
+        return id;
+    }
 }
 

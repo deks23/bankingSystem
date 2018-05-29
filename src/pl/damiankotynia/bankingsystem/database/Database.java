@@ -10,9 +10,9 @@ public interface Database {
     void loadDatabase();
     User findUserById(long id);
     Set<User> getAllUsers();
-    void addUser(User user);
+    boolean addUser(User user);
     void saveDatabase();
-    void createDatabase();
-    void removeUser(Long pesel);
-
+    boolean createDatabase();
+    boolean removeUser(Long id);
+    boolean dropDatabase();
 }

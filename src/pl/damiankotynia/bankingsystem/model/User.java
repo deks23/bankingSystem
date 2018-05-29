@@ -9,7 +9,7 @@ public class User implements Serializable{
     private  String surname;
     private String address;
     private long pesel;
-    private long cash;
+    private double cash;
 
     public long getId() {
         return id;
@@ -43,11 +43,14 @@ public class User implements Serializable{
         this.pesel = pesel;
     }
 
-    public long getCash() {
+    public double getCash() {
         return cash;
     }
 
-    public void setCash(long cash) {
+    public void setCash(double cash) {
+        cash *=100;
+        long qwe = Math.round(cash);
+        cash = (double)qwe/100;
         this.cash = cash;
     }
 
@@ -59,6 +62,7 @@ public class User implements Serializable{
         this.address = address;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -68,7 +72,6 @@ public class User implements Serializable{
 
         if (id != user.id) return false;
         if (pesel != user.pesel) return false;
-        if (cash != user.cash) return false;
         if (name != null ? !name.equals(user.name) : user.name != null) return false;
         if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
         return address != null ? address.equals(user.address) : user.address == null;
@@ -77,12 +80,20 @@ public class User implements Serializable{
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result;
+        long temp;
+        result = (int) (id ^ (id >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (int) (pesel ^ (pesel >>> 32));
-        result = 31 * result + (int) (cash ^ (cash >>> 32));
+        temp = Double.doubleToLongBits(cash);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    @Override
+    public String toString(){
+        return "#Numer konta: " + id + "\n#Imie: " + name + "\n#Nazwisko: " + surname + "\n#Adres:" + address + "\n#PESEL:" +pesel;
     }
 }
