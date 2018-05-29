@@ -26,7 +26,7 @@ public class UserService {
         System.out.println("Podaj nazwisko:\n");
         user.setSurname(inputService.getString());
         System.out.println("Podaj PESEL:\n");
-        user.setPesel(inputService.getLong());
+        user.setPesel(inputService.getPesel());
         System.out.println("Podaj adres:\n");
         user.setAddress(inputService.getString());
         System.out.println("Podaj stan konta:\n");

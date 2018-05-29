@@ -81,4 +81,25 @@ public class InputService {
         }
         return returnValue;
     }
+
+    public long  getPesel(){
+        boolean isCorrect = false;
+        long returnValue = 0;
+        while(!isCorrect){
+            String value = input.nextLine();
+            try{
+                returnValue = Long.parseLong(value);
+                isCorrect = true;
+                if(returnValue<0){
+                    System.out.println("Liczba ujemna, podaj dodatnia kwote");
+                    isCorrect=false;
+                }
+                if(value.length()!=11)
+                    isCorrect = false;
+            }catch (NumberFormatException e){
+                System.out.println("Podana wartosc jest niepoprawna");
+            }
+        }
+        return returnValue;
+    }
 }
