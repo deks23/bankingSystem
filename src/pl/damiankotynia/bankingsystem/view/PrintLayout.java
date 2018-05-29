@@ -10,7 +10,7 @@ public class PrintLayout {
         System.out.println("\n\n####################################################");
         System.out.println("System bankowy");
         System.out.println("Wybierz zadanie");
-        System.out.println("[1] Wypisz wszystkich urzytkownikow");
+        System.out.println("[1] Wypisz wszystkich uzytkownikow");
         System.out.println("[2] Dodaj urzytkownika");
         System.out.println("[3] Usun urzytkownika");
         System.out.println("[4] Dokonaj transakcji");
