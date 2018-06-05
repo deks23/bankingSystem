@@ -9,7 +9,11 @@ import java.util.Set;
 public interface Database {
     void loadDatabase();
     User findUserById(long id);
+    Set<User> findUserByName(String name);
+    Set<User> findUserBySurname(String surname);
+    User findUserByPesel(long pesel);
     Set<User> getAllUsers();
+    Set<User> findByAddress(String address);
     boolean addUser(User user);
     void saveDatabase();
     boolean createDatabase();

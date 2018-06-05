@@ -18,13 +18,23 @@ public class UserService {
 
     public void addUser(){
         User user = new User();
+        boolean validPesel = false;
         user.setId(generateID());
         System.out.println("Podaj imie:\n");
         user.setName(inputService.getString());
         System.out.println("Podaj nazwisko:\n");
         user.setSurname(inputService.getString());
         System.out.println("Podaj PESEL:\n");
-        user.setPesel(inputService.getPesel());
+        long pesel = 0;
+        do{
+             pesel = inputService.getPesel();
+             if(database.findUserByPesel(pesel)==null)
+                 validPesel=true;
+             else
+                 System.out.println("Podany pesel istnieje w bazie danych");
+        }while (!validPesel);
+        user.setPesel(pesel);
+
         System.out.println("Podaj adres:\n");
         user.setAddress(inputService.getString());
         System.out.println("Podaj stan konta:\n");

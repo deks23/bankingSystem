@@ -3,6 +3,7 @@ package pl.damiankotynia.bankingsystem;
 import pl.damiankotynia.bankingsystem.database.Database;
 import pl.damiankotynia.bankingsystem.database.FileDatabase;
 import pl.damiankotynia.bankingsystem.service.InputService;
+import pl.damiankotynia.bankingsystem.service.SearchService;
 import pl.damiankotynia.bankingsystem.service.TransactionService;
 import pl.damiankotynia.bankingsystem.service.UserService;
 import pl.damiankotynia.bankingsystem.view.PrintLayout;
@@ -16,6 +17,7 @@ public class Main {
         Database database = new FileDatabase();
         UserService userService = new UserService(database);
         InputService inputService = new InputService();
+        SearchService searchService = new SearchService(database);
         TransactionService transactionService = new TransactionService(database);
         boolean exit = false;
         database.loadDatabase();
@@ -56,9 +58,12 @@ public class Main {
                     transactionService.withdrawMoney();
                     break;
                 case 9:
+                    searchService.search();
+                    break;
+                case 0:
                     System.out.println("Opuszczasz program");
                     if(inputService.getAreYouSure())
-                        exit=true;
+                        return;
                     break;
             }
         }

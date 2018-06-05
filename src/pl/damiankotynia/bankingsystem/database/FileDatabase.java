@@ -4,6 +4,7 @@ import pl.damiankotynia.bankingsystem.model.User;
 import pl.damiankotynia.bankingsystem.service.InputService;
 
 import java.io.*;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -156,5 +157,44 @@ public class FileDatabase implements Database {
         }else
             System.out.println("Nie znaleziono użytkownika");
         return false;
+    }
+
+    @Override
+    public Set<User> findUserByName(String name) {
+        Set<User> searchResult = new HashSet<>();
+        for(User user : users){
+            if(user.getName().equals(name))
+                searchResult.add(user);
+        }
+        return searchResult;
+    }
+
+    @Override
+    public Set<User> findUserBySurname(String surname) {
+        Set<User> searchResult = new HashSet<>();
+        for(User user : users){
+            if(user.getSurname().equals(surname))
+                searchResult.add(user);
+        }
+        return searchResult;
+    }
+
+    @Override
+    public User findUserByPesel(long pesel) {
+        for(User user : users){
+            if(user.getPesel()==pesel)
+                return user;
+        }
+        return null;
+    }
+
+    @Override
+    public Set<User> findByAddress(String address) {
+        Set<User> searchResult = new HashSet<>();
+        for(User user : users){
+            if(user.getAddress().equals(address))
+                searchResult.add(user);
+        }
+        return searchResult;
     }
 }
