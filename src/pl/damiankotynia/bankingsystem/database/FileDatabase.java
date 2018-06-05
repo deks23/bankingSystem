@@ -163,7 +163,7 @@ public class FileDatabase implements Database {
     public Set<User> findUserByName(String name) {
         Set<User> searchResult = new HashSet<>();
         for(User user : users){
-            if(user.getName().equals(name))
+            if(user.getName().toLowerCase().equals(name.toLowerCase()))
                 searchResult.add(user);
         }
         return searchResult;
@@ -173,7 +173,7 @@ public class FileDatabase implements Database {
     public Set<User> findUserBySurname(String surname) {
         Set<User> searchResult = new HashSet<>();
         for(User user : users){
-            if(user.getSurname().equals(surname))
+            if(user.getSurname().toLowerCase().equals(surname.toLowerCase()))
                 searchResult.add(user);
         }
         return searchResult;
@@ -192,7 +192,7 @@ public class FileDatabase implements Database {
     public Set<User> findByAddress(String address) {
         Set<User> searchResult = new HashSet<>();
         for(User user : users){
-            if(user.getAddress().equals(address))
+            if(user.getAddress().toLowerCase().equals(address.toLowerCase()))
                 searchResult.add(user);
         }
         return searchResult;
