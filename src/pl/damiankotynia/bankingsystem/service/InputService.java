@@ -94,8 +94,10 @@ public class InputService {
                     System.out.println("Liczba ujemna, podaj dodatnia kwote");
                     isCorrect=false;
                 }
-                if(value.length()!=11)
+                if(value.length()!=11){
                     isCorrect = false;
+                    System.out.println("Numer PESEL musi mieć 11 cyfr");
+                }
             }catch (NumberFormatException e){
                 System.out.println("Podana wartosc jest niepoprawna");
             }
