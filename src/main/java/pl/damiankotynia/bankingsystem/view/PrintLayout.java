@@ -2,6 +2,7 @@ package pl.damiankotynia.bankingsystem.view;
 
 
 import pl.damiankotynia.bankingsystem.model.User;
+
 import java.util.Set;
 
 public class PrintLayout {
@@ -55,13 +56,13 @@ public class PrintLayout {
             System.out.println("Brak podanego uzytkownika");
         }else {
 
-                System.out.println("\n////////////////////////////////////////////////////");
-                System.out.println("Numer konta: " + user.getId());
-                System.out.println("Imie: " + user.getName());
-                System.out.println("Nazwisko: " + user.getSurname());
-                System.out.println("Adres: " + user.getAddress());
-                System.out.println("PESEL: " + user.getPesel());
-                System.out.println("Saldo: " + user.getCash());
+            System.out.println("\n////////////////////////////////////////////////////");
+            System.out.println("Numer konta: " + user.getId());
+            System.out.println("Imie: " + user.getName());
+            System.out.println("Nazwisko: " + user.getSurname());
+            System.out.println("Adres: " + user.getAddress());
+            System.out.println("PESEL: " + user.getPesel());
+            System.out.println("Saldo: " + user.getCash());
 
         }
     }

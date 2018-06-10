@@ -1,3 +1,4 @@
+/*
 package pl.damiankotynia.bankingsystem.database;
 
 import pl.damiankotynia.bankingsystem.model.User;
@@ -16,43 +17,7 @@ public class FileDatabase implements Database {
     private FileOutputStream fileOut = null;
     private ObjectOutputStream out = null;
     private InputService inputService;
-    @Override
-    public void loadDatabase() {
-        if(users==null){
-            users = new LinkedHashSet<>();
-            try {
-                fileIn = new FileInputStream("users.ser");
-                inputStream = new ObjectInputStream(fileIn);
-                try {
-                    Object object = inputStream.readObject();
-                    if(object!=null)
-                        users = (LinkedHashSet<User>)object;
 
-                    System.out.println("Baza danych zostala zaladowana");
-
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-            } catch (IOException i) {
-                System.out.println("Baza danych nie istnieje.");
-                return;
-            }finally {
-                try {
-                    if(fileIn!=null)
-                        fileIn.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    if(inputStream!=null)
-                        inputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }else
-            System.out.println("Baza zaostala wczesniej zaladowana");
-    }
 
     @Override
     public User findUserById(long id) {
@@ -197,4 +162,46 @@ public class FileDatabase implements Database {
         }
         return searchResult;
     }
+
+
+  */
+/*  @Override
+    public void loadDatabase() {
+        if(users==null){
+            users = new LinkedHashSet<>();
+            try {
+                fileIn = new FileInputStream("users.ser");
+                inputStream = new ObjectInputStream(fileIn);
+                try {
+                    Object object = inputStream.readObject();
+                    if(object!=null)
+                        users = (LinkedHashSet<User>)object;
+
+                    System.out.println("Baza danych zostala zaladowana");
+
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException i) {
+                System.out.println("Baza danych nie istnieje.");
+                return;
+            }finally {
+                try {
+                    if(fileIn!=null)
+                        fileIn.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    if(inputStream!=null)
+                        inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }else
+            System.out.println("Baza zaostala wczesniej zaladowana");
+    }*//*
+
 }
+*/

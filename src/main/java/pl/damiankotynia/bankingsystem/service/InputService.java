@@ -51,14 +51,14 @@ public class InputService {
 
     public boolean getAreYouSure(){
         while (true){
-           System.out.println("Czy napewno? (T/N)");
-           String value = input.nextLine();
-           if(value.length()==1){
-               if(value.equals("T")||value.equals("t"))
-                   return true;
-               else if(value.equals("N")||value.equals("n"))
-                   return false;
-           }
+            System.out.println("Czy napewno? (T/N)");
+            String value = input.nextLine();
+            if(value.length()==1){
+                if(value.equals("T")||value.equals("t"))
+                    return true;
+                else if(value.equals("N")||value.equals("n"))
+                    return false;
+            }
             System.out.println("Podano niepoprawny symbol");
         }
     }

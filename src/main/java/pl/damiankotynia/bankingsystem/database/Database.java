@@ -7,7 +7,6 @@ import java.util.Set;
 
 
 public interface Database {
-    void loadDatabase();
     User findUserById(long id);
     Set<User> findUserByName(String name);
     Set<User> findUserBySurname(String surname);
@@ -15,8 +14,11 @@ public interface Database {
     Set<User> getAllUsers();
     Set<User> findByAddress(String address);
     boolean addUser(User user);
-    void saveDatabase();
-    boolean createDatabase();
     boolean removeUser(Long id);
     boolean dropDatabase();
+
+
+ /*   boolean createDatabase();
+    void saveDatabase();
+    void loadDatabase();*/
 }
