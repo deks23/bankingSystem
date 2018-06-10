@@ -17,7 +17,7 @@ public class DatabaseTest {
     @Test
     public void qwe(){
         User user = new User();
-        user.setId(200L);
+        user.setId(300L);
         user.setCash(123.12);
         user.setAddress("asd qwe");
         user.setPesel(456L);

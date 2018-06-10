@@ -42,7 +42,9 @@ public class TransactionService {
             if(inputService.getAreYouSure()) {
                 fromUser.setCash(fromUser.getCash() - cash);
                 toUser.setCash(toUser.getCash() + cash);
-                return true;
+                if(database.saveUserData(fromUser) && database.saveUserData(toUser))
+                    return true;
+                return false;
             }else {
                 System.out.println("Anuluje operacje");
                 return false;
@@ -69,7 +71,9 @@ public class TransactionService {
         }else{
             if(inputService.getAreYouSure()){
                 user.setCash(user.getCash()-cash);
-                return true;
+                if(database.saveUserData(user))
+                    return true;
+                return false;
             }
             else{
                 System.out.println("Anuluję operację");
@@ -92,8 +96,10 @@ public class TransactionService {
         System.out.println("Podaj kwote");
         Double cash = inputService.getDouble();
         if(inputService.getAreYouSure()) {
-            user.setCash(user.getCash() - cash);
-            return true;
+            user.setCash(user.getCash() + cash);
+            if(database.saveUserData(user))
+                return true;
+            return false;
         }else{
             System.out.println("Anuluję operację");
             return false;

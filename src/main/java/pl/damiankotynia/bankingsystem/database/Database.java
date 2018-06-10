@@ -16,6 +16,7 @@ public interface Database {
     boolean addUser(User user);
     boolean removeUser(Long id);
     boolean dropDatabase();
+    boolean saveUserData(User user);
 
 
  /*   boolean createDatabase();

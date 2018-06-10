@@ -41,7 +41,7 @@ public class UserService {
         user.setCash(inputService.getDouble());
 
         if(database.addUser(user))
-            System.out.println("Użytkownik zaostał dodany poprawnie");
+            System.out.println("Użytkownik został dodany poprawnie");
         else
             System.out.println("Błąd przy dodawaniu użytkownika");
 
