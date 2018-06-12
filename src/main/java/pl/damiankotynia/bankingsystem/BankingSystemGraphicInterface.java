@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import pl.damiankotynia.bankingsystem.controller.MainMenuController;
 
 import java.io.IOException;
 
@@ -39,7 +40,8 @@ public class BankingSystemGraphicInterface extends Application {
             loader.setLocation(BankingSystemGraphicInterface.class.getResource("/MainMenu.fxml"));
             AnchorPane mainMenu = (AnchorPane) loader.load();
             rootLayout.setLeft(mainMenu);
-
+            MainMenuController controller = loader.getController();
+            controller.setMainApp(this);
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -78,6 +80,5 @@ public class BankingSystemGraphicInterface extends Application {
         this.primaryStage.setTitle("Banking system");
         initRootLayout();
         showMainMenu();
-        showAddClient();
     }
 }

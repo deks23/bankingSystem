@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.damiankotynia.bankingsystem.controller.MainMenuController">
    <children>
       <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="151.0" AnchorPane.leftAnchor="20.0">
          <columnConstraints>
@@ -22,13 +22,13 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" text="Show clients" />
-            <Button mnemonicParsing="false" text="Deposit money" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="Withdraw money" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" text="Transfer money" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" text="Add client" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" text="Remove client" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" text="Search" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" onAction="#showClientsClick" text="Show clients" />
+            <Button mnemonicParsing="false" onAction="#depositMoneyClick" text="Deposit money" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#withdrawMoneyClick" text="Withdraw money" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#transferMoneyClick" text="Transfer money" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false"  onAction="#addClientClick" text="Add client" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#removeClientClick" text="Remove client" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" onAction="#searchClick" text="Search" GridPane.rowIndex="6" />
          </children>
       </GridPane>
    </children>
