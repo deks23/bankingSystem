@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import pl.damiankotynia.bankingsystem.controller.AddUserController;
 import pl.damiankotynia.bankingsystem.controller.MainMenuController;
 import pl.damiankotynia.bankingsystem.controller.ShowUsersController;
 import pl.damiankotynia.bankingsystem.database.Database;
@@ -28,6 +29,7 @@ public class BankingSystemGraphicInterface extends Application {
     private AnchorPane addUserView;
     private ShowUsersController userListController;
     private MainMenuController mainMenuController;
+    private AddUserController addUserController;
     private Database database;
 
     public static void main(String[] args) {
@@ -88,7 +90,7 @@ public class BankingSystemGraphicInterface extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(BankingSystemGraphicInterface.class.getResource("/AddClient.fxml"));
             addUserView = (AnchorPane) loader.load();
-            //TODO controller for addClientView
+            addUserController = loader.getController();
 
             FXMLLoader loader2 = new FXMLLoader();
             loader2.setLocation(BankingSystemGraphicInterface.class.getResource("/UserList.fxml"));

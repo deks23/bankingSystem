@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.damiankotynia.bankingsystem.controller.AddUserController">
    <children>
       <GridPane layoutX="200.0" layoutY="173.0" prefHeight="359.0" prefWidth="600.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
         <columnConstraints>
@@ -29,17 +28,17 @@
             <Label text="PESEL" GridPane.rowIndex="2" />
             <Label text="Address" GridPane.rowIndex="3" />
             <Label text="Cash" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="nameTextField" GridPane.columnIndex="1" />
+            <TextField fx:id="surnameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="peselTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="addressTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="cashTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <AnchorPane layoutX="380.0" layoutY="419.0" prefHeight="45.0" prefWidth="124.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="20.0">
          <children>
-            <Button layoutX="16.0" layoutY="9.0" mnemonicParsing="false" text="Clear" AnchorPane.leftAnchor="0.0" />
-            <Button layoutX="118.0" layoutY="9.0" mnemonicParsing="false" text="Add" AnchorPane.rightAnchor="0.0" />
+            <Button fx:id="clearButton" layoutX="16.0" layoutY="9.0" mnemonicParsing="false" onAction="#clearButtonClick" text="Clear" AnchorPane.leftAnchor="0.0" />
+            <Button fx:id="addButton" layoutX="118.0" layoutY="9.0" mnemonicParsing="false" text="Add" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
    </children>
