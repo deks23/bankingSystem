@@ -1,5 +1,7 @@
 package pl.damiankotynia.bankingsystem.model;
 
+import javafx.beans.property.*;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
@@ -64,6 +66,30 @@ public class User implements Serializable{
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public StringProperty nameProperty(){
+        return new SimpleStringProperty(name);
+    }
+
+    public StringProperty surnameProperty(){
+        return new SimpleStringProperty(surname);
+    }
+
+    public StringProperty addressProperty(){
+        return new SimpleStringProperty(address);
+    }
+
+    public LongProperty peselProperty(){
+        return new SimpleLongProperty(pesel);
+    }
+
+    public DoubleProperty cashProperty(){
+        return new SimpleDoubleProperty(cash);
+    }
+    public LongProperty idProperty(){
+        return new SimpleLongProperty(id);
+    }
+
 
 
     @Override
