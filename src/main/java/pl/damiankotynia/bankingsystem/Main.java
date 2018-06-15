@@ -27,7 +27,7 @@ public class Main {
             switch (option) {
                 case 1:
                     System.out.println("");
-                    userService.showUsers();
+                    PrintLayout.showUsers(userService.getUsers());
                     break;
                 case 2:
                     System.out.println("");

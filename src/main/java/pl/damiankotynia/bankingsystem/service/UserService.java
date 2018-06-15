@@ -6,6 +6,7 @@ import pl.damiankotynia.bankingsystem.model.User;
 import pl.damiankotynia.bankingsystem.view.PrintLayout;
 
 import java.util.Random;
+import java.util.Set;
 
 public class UserService {
     private InputService inputService;
@@ -55,8 +56,9 @@ public class UserService {
             System.out.println("\nOperacja nie powiodla sie, sproboj ponownie");
     }
 
-    public void showUsers(){
-        PrintLayout.showUsers(database.getAllUsers());
+
+    public Set<User> getUsers(){
+        return database.getAllUsers();
     }
 
     private long generateID(){
@@ -68,6 +70,14 @@ public class UserService {
             user = database.findUserById(id);
         }while(user!=null);
         return id;
+    }
+
+    public boolean removeUser(Long id){
+        return database.removeUser(inputService.getLong());
+    }
+
+    public boolean addUser(User user){
+        return database.addUser(user);
     }
 }
 
