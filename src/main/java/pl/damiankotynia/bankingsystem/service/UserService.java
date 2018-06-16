@@ -2,6 +2,7 @@ package pl.damiankotynia.bankingsystem.service;
 
 
 import pl.damiankotynia.bankingsystem.database.Database;
+import pl.damiankotynia.bankingsystem.database.DatabaseImpl;
 import pl.damiankotynia.bankingsystem.model.User;
 import pl.damiankotynia.bankingsystem.view.PrintLayout;
 
@@ -15,6 +16,9 @@ public class UserService {
     public UserService(Database database){
         inputService = new InputService();
         this.database = database;
+    }
+    public  UserService(){
+        database = new DatabaseImpl();
     }
 
     public void addUser(){
@@ -73,10 +77,13 @@ public class UserService {
     }
 
     public boolean removeUser(Long id){
-        return database.removeUser(inputService.getLong());
+        return database.removeUser(id);
     }
 
     public boolean addUser(User user){
+        if (database.findUserByPesel(user.getPesel())!=null)
+            return false;
+        user.setId(generateID());
         return database.addUser(user);
     }
 }

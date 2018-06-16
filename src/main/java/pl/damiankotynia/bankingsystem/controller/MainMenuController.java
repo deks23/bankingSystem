@@ -48,17 +48,17 @@ public class MainMenuController {
 
     @FXML
     public void depositMoneyClick(){
-        mainApp.showUserList();
+        mainApp.showDepositMoney();
     }
 
     @FXML
     public void withdrawMoneyClick(){
-        mainApp.showUserList();
+        mainApp.showWithdrawMoney();
     }
 
     @FXML
     public void transferMoneyClick(){
-        mainApp.showUserList();
+        mainApp.showTransferMoney();
     }
 
     @FXML

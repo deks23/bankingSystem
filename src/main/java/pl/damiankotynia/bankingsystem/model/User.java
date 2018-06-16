@@ -54,8 +54,8 @@ public class User implements Serializable{
 
     public void setCash(double cash) {
         cash *=100;
-        long qwe = Math.round(cash);
-        cash = (double)qwe/100;
+        long temp = Math.round(cash);
+        cash = (double)temp/100;
         this.cash = cash;
     }
 

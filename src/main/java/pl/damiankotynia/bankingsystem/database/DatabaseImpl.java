@@ -152,12 +152,6 @@ public class DatabaseImpl implements Database {
         return true;
     }
 
-    private void commitTransaction(EntityManager entityManager) {
-        entityManager.getTransaction().commit();
-        entityManager.close();
-        entityManagerFactory.close();
-    }
-
     private EntityManager createEntityManager() {
         entityManagerFactory = Persistence.createEntityManagerFactory("bankingSystem");
         EntityManager entityManager = entityManagerFactory.createEntityManager();

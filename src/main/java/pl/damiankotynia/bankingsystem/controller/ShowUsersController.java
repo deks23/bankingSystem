@@ -43,7 +43,6 @@ public class ShowUsersController {
 
     public void setMainApp(BankingSystemGraphicInterface mainApp){
         this.mainApp = mainApp;
-
     }
 
     public void setTableData(ObservableList<User> list){

@@ -27,8 +27,12 @@ public class BankingSystemGraphicInterface extends Application {
     private ObservableList<User> userList = FXCollections.observableArrayList();
     private AnchorPane userListView;
     private AnchorPane addUserView;
+    private AnchorPane depositMoney;
+    private AnchorPane withdrawMoney;
+    private AnchorPane transferMoney;
     private ShowUsersController userListController;
     private MainMenuController mainMenuController;
+
     private AddUserController addUserController;
     private Database database;
 
@@ -56,7 +60,12 @@ public class BankingSystemGraphicInterface extends Application {
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
+            primaryStage.setMaxHeight(510);
+            primaryStage.setMinHeight(510);
+            primaryStage.setMaxWidth(900);
+            primaryStage.setMinWidth(900);
             primaryStage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -76,12 +85,28 @@ public class BankingSystemGraphicInterface extends Application {
     }
 
     public void showUserList(){
+            userList.clear();
+            userList.addAll(database.getAllUsers());
             rootLayout.setCenter(userListView);
 
     }
 
     public void showAddClient(){
+            addUserController.clearButtonClick();
             rootLayout.setCenter(addUserView);
+    }
+
+    public void showDepositMoney(){
+        rootLayout.setCenter(depositMoney);
+    }
+
+    public void showWithdrawMoney(){
+        rootLayout.setCenter(withdrawMoney);
+    }
+
+
+    public void showTransferMoney(){
+        rootLayout.setCenter(transferMoney);
     }
 
     //TODO
@@ -98,6 +123,18 @@ public class BankingSystemGraphicInterface extends Application {
             userListController = loader2.getController();
             userListController.setMainApp(this);
             userListController.setTableData(getUserList());
+
+            FXMLLoader loader3 = new FXMLLoader();
+            loader3.setLocation(BankingSystemGraphicInterface.class.getResource("/DepositMoney.fxml"));
+            depositMoney = (AnchorPane) loader3.load();
+
+            FXMLLoader loader4 = new FXMLLoader();
+            loader4.setLocation(BankingSystemGraphicInterface.class.getResource("/WithdrawMoney.fxml"));
+            withdrawMoney = (AnchorPane) loader4.load();
+
+            FXMLLoader loader5 = new FXMLLoader();
+            loader5.setLocation(BankingSystemGraphicInterface.class.getResource("/TransferMoney.fxml"));
+            transferMoney = (AnchorPane) loader5.load();
 
         }catch (IOException e){
             e.printStackTrace();

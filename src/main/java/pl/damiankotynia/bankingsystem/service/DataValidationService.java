@@ -7,12 +7,25 @@ public class DataValidationService {
             try{
                 returnValue = Long.parseLong(pesel);
                 if(returnValue<0)
-                    return 0L;
+                    return -2L;
                 if(pesel.length()!=11)
-                    return 0L;
+                    return -1L;
             }catch (NumberFormatException e){
-                return 0L;
+                return -3L;
             }
+        return returnValue;
+    }
+
+    public static Double validateDouble(String value){
+        Double returnValue = -1.0;
+        try{
+            returnValue = Double.parseDouble(value);
+            if(returnValue<0){
+                return -1.0;
+            }
+        }catch (NumberFormatException e){
+            return -2.0;
+        }
         return returnValue;
     }
 }
