@@ -8,7 +8,7 @@ import pl.damiankotynia.bankingsystem.BankingSystemGraphicInterface;
 import pl.damiankotynia.bankingsystem.service.DataValidationService;
 import pl.damiankotynia.bankingsystem.service.TransactionService;
 
-public class WithdrawMoneyController {
+public class DepositMoneyController {
     @FXML
     private TextField accountNumberField;
 
@@ -19,13 +19,13 @@ public class WithdrawMoneyController {
     private Button clearButton;
 
     @FXML
-    private Button withdrawButton;
+    private Button depositButton;
 
     private BankingSystemGraphicInterface mainApp;
 
     private TransactionService transactionService;
 
-    public WithdrawMoneyController (){
+    public DepositMoneyController (){
         transactionService = new TransactionService();
     }
     @FXML
@@ -44,7 +44,7 @@ public class WithdrawMoneyController {
 
 
     @FXML
-    private void withdrawButtonClick(){
+    private void depositButtonClick(){
         Long accountNumber = DataValidationService.validateLong(accountNumberField.getCharacters().toString());
         if (accountNumber==-1L){
             accountNumberField.setText("");
@@ -58,7 +58,7 @@ public class WithdrawMoneyController {
             showAlert("Błąd", "Podano niewłaściwą kwotę");
             return;
         }
-        if(transactionService.withdrawMoney(accountNumber, cashAmmount, this)){
+        if(transactionService.depositMoney(accountNumber, cashAmmount, this)){
             clearButtonClick();
             showSucces();
         }
@@ -75,7 +75,7 @@ public class WithdrawMoneyController {
     private void showSucces(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Sukces");
-        alert.setHeaderText("Pieniądze zostały wypłącone pomyślnie");
+        alert.setHeaderText("Pieniądze zostały wpłacone pomyślnie");
         alert.showAndWait();
     }
 }

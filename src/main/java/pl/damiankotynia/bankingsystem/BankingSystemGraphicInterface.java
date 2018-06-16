@@ -8,10 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import pl.damiankotynia.bankingsystem.controller.AddUserController;
-import pl.damiankotynia.bankingsystem.controller.MainMenuController;
-import pl.damiankotynia.bankingsystem.controller.ShowUsersController;
-import pl.damiankotynia.bankingsystem.controller.WithdrawMoneyController;
+import pl.damiankotynia.bankingsystem.controller.*;
 import pl.damiankotynia.bankingsystem.database.Database;
 import pl.damiankotynia.bankingsystem.database.DatabaseImpl;
 import pl.damiankotynia.bankingsystem.model.User;
@@ -34,6 +31,8 @@ public class BankingSystemGraphicInterface extends Application {
     private ShowUsersController userListController;
     private MainMenuController mainMenuController;
     private WithdrawMoneyController withdrawMoneyController;
+    private DepositMoneyController depositMoneyController;
+    private TransferMoneyController transferMoneyController;
 
     private AddUserController addUserController;
     private Database database;
@@ -100,10 +99,12 @@ public class BankingSystemGraphicInterface extends Application {
 
     public void showDepositMoney(){
         rootLayout.setCenter(depositMoney);
+        depositMoneyController.clearButtonClick();
     }
 
     public void showWithdrawMoney(){
         rootLayout.setCenter(withdrawMoney);
+        withdrawMoneyController.clearButtonClick();
     }
 
 
@@ -129,6 +130,8 @@ public class BankingSystemGraphicInterface extends Application {
             FXMLLoader loader3 = new FXMLLoader();
             loader3.setLocation(BankingSystemGraphicInterface.class.getResource("/DepositMoney.fxml"));
             depositMoney = (AnchorPane) loader3.load();
+            depositMoneyController = loader3.getController();
+            depositMoneyController.setMainApp(this);
 
             FXMLLoader loader4 = new FXMLLoader();
             loader4.setLocation(BankingSystemGraphicInterface.class.getResource("/WithdrawMoney.fxml"));
@@ -140,6 +143,8 @@ public class BankingSystemGraphicInterface extends Application {
             FXMLLoader loader5 = new FXMLLoader();
             loader5.setLocation(BankingSystemGraphicInterface.class.getResource("/TransferMoney.fxml"));
             transferMoney = (AnchorPane) loader5.load();
+            transferMoneyController = loader5.getController();
+            transferMoneyController.setMainApp(this);
 
         }catch (IOException e){
             e.printStackTrace();

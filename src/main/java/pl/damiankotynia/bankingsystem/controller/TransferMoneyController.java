@@ -8,9 +8,12 @@ import pl.damiankotynia.bankingsystem.BankingSystemGraphicInterface;
 import pl.damiankotynia.bankingsystem.service.DataValidationService;
 import pl.damiankotynia.bankingsystem.service.TransactionService;
 
-public class WithdrawMoneyController {
+public class TransferMoneyController {
     @FXML
-    private TextField accountNumberField;
+    private TextField sourceAccountNumberField;
+
+    @FXML
+    private TextField targetAccountNumberField;
 
     @FXML
     private TextField cashAmmountField;
@@ -19,13 +22,13 @@ public class WithdrawMoneyController {
     private Button clearButton;
 
     @FXML
-    private Button withdrawButton;
+    private Button transferButton;
 
     private BankingSystemGraphicInterface mainApp;
 
     private TransactionService transactionService;
 
-    public WithdrawMoneyController (){
+    public TransferMoneyController (){
         transactionService = new TransactionService();
     }
     @FXML
@@ -38,17 +41,24 @@ public class WithdrawMoneyController {
 
     @FXML
     public void clearButtonClick(){
-        accountNumberField.setText("");
+        sourceAccountNumberField.setText("");
+        targetAccountNumberField.setText("");
         cashAmmountField.setText("");
     }
 
 
     @FXML
-    private void withdrawButtonClick(){
-        Long accountNumber = DataValidationService.validateLong(accountNumberField.getCharacters().toString());
-        if (accountNumber==-1L){
-            accountNumberField.setText("");
-            showAlert("Błąd", "Podano niewłaściwy numer konta");
+    private void transferButtonClick(){
+        Long sourceAccountNumber = DataValidationService.validateLong(sourceAccountNumberField.getCharacters().toString());
+        Long targetAccountNumber = DataValidationService.validateLong(targetAccountNumberField.getCharacters().toString());
+        if (sourceAccountNumber==-1L){
+            sourceAccountNumberField.setText("");
+            showAlert("Błąd", "Podano zły numer konta źródłowego. Numer konta musi być liczbą dodatnią");
+            return;
+        }
+        if (targetAccountNumber==-1L){
+            targetAccountNumberField.setText("");
+            showAlert("Błąd", "Podano zły numer konta docelowego. Numer konta musi być liczbą dodatnią");
             return;
         }
 
@@ -58,7 +68,7 @@ public class WithdrawMoneyController {
             showAlert("Błąd", "Podano niewłaściwą kwotę");
             return;
         }
-        if(transactionService.withdrawMoney(accountNumber, cashAmmount, this)){
+        if(transactionService.transferMoney(sourceAccountNumber, targetAccountNumber, cashAmmount, this)){
             clearButtonClick();
             showSucces();
         }
@@ -75,7 +85,7 @@ public class WithdrawMoneyController {
     private void showSucces(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Sukces");
-        alert.setHeaderText("Pieniądze zostały wypłącone pomyślnie");
+        alert.setHeaderText("Pieniądze zostały przelane pomyślnie");
         alert.showAndWait();
     }
 }

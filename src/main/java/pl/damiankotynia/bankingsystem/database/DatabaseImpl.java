@@ -152,6 +152,22 @@ public class DatabaseImpl implements Database {
         return true;
     }
 
+    @Override
+    public boolean saveUserAfterTransfer(User sourceUser, User targetUser) {
+        EntityManager entityManager = createEntityManager();
+        try{
+            entityManager.getTransaction().begin();
+            entityManager.merge(sourceUser);
+            entityManager.merge(targetUser);
+            entityManager.getTransaction().commit();
+        }catch (PersistenceException e){
+            return false;
+        }finally {
+            closeEntityManager(entityManager);
+        }
+        return true;
+    }
+
     private EntityManager createEntityManager() {
         entityManagerFactory = Persistence.createEntityManagerFactory("bankingSystem");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
