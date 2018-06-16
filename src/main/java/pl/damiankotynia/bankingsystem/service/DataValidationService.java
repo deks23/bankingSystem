@@ -28,4 +28,16 @@ public class DataValidationService {
         }
         return returnValue;
     }
+
+    public static Long validateLong(String value){
+        Long returnValue;
+        try{
+            returnValue = Long.parseLong(value);
+            if (returnValue<=0)
+                return -1L;
+        }catch (NumberFormatException e){
+            return -1L;
+        }
+        return returnValue;
+    }
 }

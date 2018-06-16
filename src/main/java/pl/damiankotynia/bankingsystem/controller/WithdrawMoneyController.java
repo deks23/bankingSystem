@@ -5,6 +5,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import pl.damiankotynia.bankingsystem.BankingSystemGraphicInterface;
+import pl.damiankotynia.bankingsystem.service.DataValidationService;
+import pl.damiankotynia.bankingsystem.service.TransactionService;
 
 public class WithdrawMoneyController {
     @FXML
@@ -21,12 +23,11 @@ public class WithdrawMoneyController {
 
     private BankingSystemGraphicInterface mainApp;
 
-    @FXML
-    public void clearButtonClick(){
-        accountNumberField.setText("");
-        cashAmmountField.setText("");
-    }
+    private TransactionService transactionService;
 
+    public WithdrawMoneyController (){
+        transactionService = new TransactionService();
+    }
     @FXML
     private void initialize(){
     }
@@ -36,17 +37,39 @@ public class WithdrawMoneyController {
     }
 
     @FXML
-    private void withdrawButtonClick(){
-        cashAmmountField.getCharacters().toString();
-        accountNumberField.getCharacters().toString();
+    public void clearButtonClick(){
+        accountNumberField.setText("");
+        cashAmmountField.setText("");
     }
 
 
-    private void showAlert(String title, String header, String content){
+    @FXML
+    private void withdrawButtonClick(){
+        Long accountNumber = DataValidationService.validateLong(accountNumberField.getCharacters().toString());
+        if (accountNumber==-1L){
+            accountNumberField.setText("");
+            showAlert("Błąd", "Podano niewłaściwy numer konta");
+            return;
+        }
+
+        Double cashAmmount = DataValidationService.validateDouble(cashAmmountField.getCharacters().toString());
+        if (cashAmmount<0){
+            cashAmmountField.setText("");
+            showAlert("Błąd", "Podano niewłaściwą kwotę");
+            return;
+        }
+        if(transactionService.withdrawMoney(accountNumber, cashAmmount, this)){
+            clearButtonClick();
+            showSucces();
+        }else
+            showAlert("Błąd", "Wystąpił nieoczekiwany błąd");
+    }
+
+
+    public void showAlert(String title, String header){
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(title);
         alert.setHeaderText(header);
-        alert.setContentText(content);
         alert.showAndWait();
     }
 

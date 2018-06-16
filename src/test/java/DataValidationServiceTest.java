@@ -52,4 +52,25 @@ public class DataValidationServiceTest {
         Assert.assertEquals(expected, value);
     }
 
+    @Test
+    public void validLongValidation(){
+        Long value = DataValidationService.validateLong("12");
+        Long expected = new Long(12L);
+        Assert.assertEquals(expected, value);
+    }
+
+    @Test
+    public void negativeLongValidation(){
+        Long value = DataValidationService.validateLong("-12");
+        Long expected = new Long(-1L);
+        Assert.assertEquals(expected, value);
+    }
+
+    @Test
+    public void notANumberLongValidation(){
+        Long value = DataValidationService.validateLong("qwe");
+        Long expected = new Long(-1L);
+        Assert.assertEquals(expected, value);
+    }
+
 }

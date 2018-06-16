@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import pl.damiankotynia.bankingsystem.controller.AddUserController;
 import pl.damiankotynia.bankingsystem.controller.MainMenuController;
 import pl.damiankotynia.bankingsystem.controller.ShowUsersController;
+import pl.damiankotynia.bankingsystem.controller.WithdrawMoneyController;
 import pl.damiankotynia.bankingsystem.database.Database;
 import pl.damiankotynia.bankingsystem.database.DatabaseImpl;
 import pl.damiankotynia.bankingsystem.model.User;
@@ -32,6 +33,7 @@ public class BankingSystemGraphicInterface extends Application {
     private AnchorPane transferMoney;
     private ShowUsersController userListController;
     private MainMenuController mainMenuController;
+    private WithdrawMoneyController withdrawMoneyController;
 
     private AddUserController addUserController;
     private Database database;
@@ -131,6 +133,9 @@ public class BankingSystemGraphicInterface extends Application {
             FXMLLoader loader4 = new FXMLLoader();
             loader4.setLocation(BankingSystemGraphicInterface.class.getResource("/WithdrawMoney.fxml"));
             withdrawMoney = (AnchorPane) loader4.load();
+            withdrawMoneyController = loader4.getController();
+            withdrawMoneyController.setMainApp(this);
+
 
             FXMLLoader loader5 = new FXMLLoader();
             loader5.setLocation(BankingSystemGraphicInterface.class.getResource("/TransferMoney.fxml"));

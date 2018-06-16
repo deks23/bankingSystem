@@ -1,6 +1,8 @@
 package pl.damiankotynia.bankingsystem.service;
 
 
+import javafx.scene.control.Alert;
+import pl.damiankotynia.bankingsystem.controller.WithdrawMoneyController;
 import pl.damiankotynia.bankingsystem.database.Database;
 import pl.damiankotynia.bankingsystem.database.DatabaseImpl;
 import pl.damiankotynia.bankingsystem.model.User;
@@ -85,6 +87,24 @@ public class TransactionService {
                 return false;
             }
         }
+    }
+
+    public boolean withdrawMoney(Long accountNumber, Double cashAmmount, WithdrawMoneyController controller){
+        User user = database.findUserById(accountNumber);
+        if (user==null){
+            controller.showAlert("Błąd", "Podane konto nie istnieje");
+            return false;
+        }
+
+        if(user.getCash()<cashAmmount){
+            controller.showAlert("Błąd", "Na koncie nie ma wystarczającej ilości środków");
+            return false;
+        }
+        user.setCash(user.getCash()-cashAmmount);
+        if(!database.saveUserData(user))
+            return false;
+        else
+            return true;
     }
 
     public boolean depositMoney(){
