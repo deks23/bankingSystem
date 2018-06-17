@@ -61,8 +61,8 @@ public class BankingSystemGraphicInterface extends Application {
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
-            primaryStage.setMaxHeight(510);
-            primaryStage.setMinHeight(510);
+            primaryStage.setMaxHeight(550);
+            primaryStage.setMinHeight(550);
             primaryStage.setMaxWidth(900);
             primaryStage.setMinWidth(900);
             primaryStage.show();
