@@ -69,7 +69,7 @@ public class ShowUsersController {
             showAlert("Błąd", "Wystąpił nieoczekiwany błąd");
         else
             showSucces();
-
+        mainApp.setUserList();
     }
 
     private void setSelectedUser(User user){

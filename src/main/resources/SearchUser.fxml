@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.damiankotynia.bankingsystem.controller.SearchController">
+   <children>
+      <AnchorPane layoutX="40.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="139.0">
+         <children>
+            <Button layoutX="33.0" layoutY="37.0" mnemonicParsing="false" onAction="#nameSearchClick" prefHeight="27.0" prefWidth="133.0" text="Name" />
+            <Button layoutX="33.0" layoutY="87.0" mnemonicParsing="false" onAction="#surnameSearchClick" prefHeight="27.0" prefWidth="133.0" text="Surname" />
+            <Button layoutX="33.0" layoutY="134.0" mnemonicParsing="false" onAction="#addressSearchClick" prefHeight="27.0" prefWidth="133.0" text="Address" />
+            <Button layoutX="174.0" layoutY="37.0" mnemonicParsing="false" onAction="#peselSearchClick" prefHeight="27.0" prefWidth="133.0" text="PESEL" />
+            <Button layoutX="174.0" layoutY="87.0" mnemonicParsing="false" onAction="#accountNumberSearchClick" prefHeight="27.0" prefWidth="133.0" text="Account number" />
+         </children>
+      </AnchorPane>
+      <TextField fx:id="searchPhraseField" layoutX="176.0" layoutY="45.0" AnchorPane.topAnchor="45.0" />
+      <Text layoutX="40.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search phrase" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="50.0" />
+   </children>
+</AnchorPane>

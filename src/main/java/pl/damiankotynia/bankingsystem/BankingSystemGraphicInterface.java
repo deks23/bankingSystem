@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
+import java.util.Set;
 
 public class BankingSystemGraphicInterface extends Application {
 
@@ -28,11 +29,13 @@ public class BankingSystemGraphicInterface extends Application {
     private AnchorPane depositMoney;
     private AnchorPane withdrawMoney;
     private AnchorPane transferMoney;
+    private AnchorPane searchUser;
     private ShowUsersController userListController;
     private MainMenuController mainMenuController;
     private WithdrawMoneyController withdrawMoneyController;
     private DepositMoneyController depositMoneyController;
     private TransferMoneyController transferMoneyController;
+    private SearchController searchController;
 
     private AddUserController addUserController;
     private Database database;
@@ -41,12 +44,13 @@ public class BankingSystemGraphicInterface extends Application {
         launch(args);
     }
 
-    private ObservableList<User> setUserList(){
+    public ObservableList<User> setUserList(){
+        userList.clear();
         userList.addAll(database.getAllUsers());
         return userList;
     }
 
-    public ObservableList<User> getUserList(){
+    private ObservableList<User> getUserList(){
         setUserList();
         return userList;
     }
@@ -89,7 +93,12 @@ public class BankingSystemGraphicInterface extends Application {
             userList.clear();
             userList.addAll(database.getAllUsers());
             rootLayout.setCenter(userListView);
+    }
 
+    public void showSearchedUserList(Set<User> users){
+        userList.clear();
+        userList.addAll(users);
+        rootLayout.setCenter(userListView);
     }
 
     public void showAddClient(){
@@ -105,6 +114,10 @@ public class BankingSystemGraphicInterface extends Application {
     public void showWithdrawMoney(){
         rootLayout.setCenter(withdrawMoney);
         withdrawMoneyController.clearButtonClick();
+    }
+
+    public void showSearchUser(){
+        rootLayout.setCenter(searchUser);
     }
 
 
@@ -146,6 +159,11 @@ public class BankingSystemGraphicInterface extends Application {
             transferMoneyController = loader5.getController();
             transferMoneyController.setMainApp(this);
 
+            FXMLLoader loader6 = new FXMLLoader();
+            loader6.setLocation(BankingSystemGraphicInterface.class.getResource("/SearchUser.fxml"));
+            searchUser = (AnchorPane) loader6.load();
+            searchController = loader6.getController();
+            searchController.setMainApp(this);
         }catch (IOException e){
             e.printStackTrace();
         }

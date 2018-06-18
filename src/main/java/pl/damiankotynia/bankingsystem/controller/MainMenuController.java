@@ -17,8 +17,6 @@ public class MainMenuController {
     @FXML
     private Button transferMoney;
     @FXML
-    private Button removeClient;
-    @FXML
     private Button searchClient;
 
     private BankingSystemGraphicInterface mainApp;
@@ -38,6 +36,7 @@ public class MainMenuController {
 
     @FXML
     public void showClientsClick(){
+        mainApp.setUserList();
         mainApp.showUserList();
     }
 
@@ -61,13 +60,9 @@ public class MainMenuController {
         mainApp.showTransferMoney();
     }
 
-    @FXML
-    public void removeClientClick(){
-        mainApp.showUserList();
-    }
 
     @FXML
     public void searchClick(){
-        mainApp.showUserList();
+        mainApp.showSearchUser();
     }
 }

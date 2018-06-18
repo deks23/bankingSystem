@@ -26,9 +26,8 @@
             <Button mnemonicParsing="false" onAction="#depositMoneyClick" text="Deposit money" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" onAction="#withdrawMoneyClick" text="Withdraw money" GridPane.rowIndex="3" />
             <Button mnemonicParsing="false" onAction="#transferMoneyClick" text="Transfer money" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false"  onAction="#addClientClick" text="Add client" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onAction="#removeClientClick" text="Remove client" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" onAction="#searchClick" text="Search" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" onAction="#addClientClick" text="Add client" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#searchClick" text="Search" GridPane.rowIndex="5" />
          </children>
       </GridPane>
    </children>

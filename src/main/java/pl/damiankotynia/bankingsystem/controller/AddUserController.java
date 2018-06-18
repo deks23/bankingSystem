@@ -91,6 +91,7 @@ public class AddUserController {
         user.setSurname(surname);
         if(!userService.addUser(user)){
             showAlert("Błąd", "Wystąpił nieoczekiwany błąd", "Podany pesel istnieje już w bazie danych");
+            return;
         }
         clearButtonClick();
         showSucces();
